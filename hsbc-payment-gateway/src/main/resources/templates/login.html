@@ -24,16 +24,17 @@
 
     <form th:action="@{/login}" method="post">
       <label for="username">Username</label>
-      <input id="username" name="username" type="text" autocomplete="username" />
+      <input id="username" name="username" type="text" autocomplete="username" required />
 
       <label for="password">Password</label>
-      <input id="password" name="password" type="password" autocomplete="current-password" />
+      <input id="password" name="password" type="password" autocomplete="current-password" required />
 
       <button type="submit">Login</button>
     </form>
 
     <p class="hint">
-      Demo credentials: <strong>user</strong> / <strong>password</strong>
+      Demo credentials — user: <strong>user</strong> / <strong>password</strong><br/>
+      Demo credentials — admin: <strong>admin</strong> / <strong>adminpass</strong>
     </p>
 
     <p class="hint"><a th:href="@{/public}">Go to public page</a></p>
