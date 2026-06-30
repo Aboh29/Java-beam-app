@@ -38,4 +38,19 @@ class AuthFlowTest {
       .andExpect(status().isOk())
       .andExpect(view().name("index"));
   }
+
+  @Test
+  @WithMockUser(username = "user", roles = {"USER"})
+  void regularUserCannotAccessAdminPage() throws Exception {
+    mvc.perform(get("/admin"))
+      .andExpect(status().isForbidden());
+  }
+
+  @Test
+  @WithMockUser(username = "admin", roles = {"ADMIN"})
+  void adminUserCanAccessAdminPage() throws Exception {
+    mvc.perform(get("/admin"))
+      .andExpect(status().isOk())
+      .andExpect(view().name("admin"));
+  }
 }
